@@ -10,7 +10,7 @@ import { Letter } from './interfaces/letter';
 export class AppComponent {
 
   title = 'hangman';
-  mistakeCount = 0;
+  allowedTryCount = 5;
   currentWord = [] as string[];
   displayWord = [] as string[];
   lettersState = [] as Letter[];
@@ -19,8 +19,6 @@ export class AppComponent {
   GameStatus = GameStatus;
 
   status = GameStatus.GameOn;
-
-  maxTries = 5;
   wins = 0;
   highscore = 0; 
 
@@ -45,6 +43,7 @@ export class AppComponent {
     this.generateLettersState();
     this.selectWordRandomly();
     this.initDisplayWord();
+    console.log(this.currentWord)
   }
 
   initDisplayWord() {
@@ -110,20 +109,19 @@ export class AppComponent {
     }
   }
 
-  handleWrongAnswer(item: Letter) {
-    this.mistakeCount = this.mistakeCount + 1;
+  handleWrongAnswer(item: Letter) { 
+    this.allowedTryCount = this.allowedTryCount - 1;
     item.isSelected = true;
-
-      if (this.mistakeCount === this.maxTries) {
-        this.status =  GameStatus.GameOver;
-      }
+    if (this.allowedTryCount === 0){
+      this.status = GameStatus.GameOver;
+    } 
   }
 
   clearData() {
     this.currentWord = [] as string[];
     this.displayWord = [] as string[];
     this.lettersState = [] as Letter[];
-    this.mistakeCount = 0;
+    this.allowedTryCount = 5;
     this.status = GameStatus.GameOn;
   }
   playAgain() {

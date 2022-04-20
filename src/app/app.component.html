@@ -1,9 +1,23 @@
+<div class="mobile-stats" *ngIf="status !== GameStatus.GameWon">
+    <div class="mobile-score"> Wins: {{wins}}</div>
+    <div class="mobile-score "> Highscore: {{highscore}}</div>
+    <div class="mobile-hangman-mistakes">Remaining tries: {{allowedTryCount }}</div>
+</div>
+<div class="correct-mobile-stats" *ngIf="status === GameStatus.GameWon">
+    CORRECT!
+</div>
+
 <div class="container">
 
     <div class="image">
         <div class="title">THE HANGMAN GAME</div>
-        <img class="hangman-image" [src]="'assets/' + mistakeCount + '.png'">
-        <div></div>
+        <div class="hangman">
+
+
+
+            <img class="hangman-image" [src]="'assets/' + allowedTryCount + '.png'">
+            <div class="hangman-mistakes">Remaining tries: {{allowedTryCount }}</div>
+        </div>
     </div>
 
     <div class="word-side" *ngIf="status === GameStatus.GameOn || status === GameStatus.GameWon">
@@ -25,11 +39,11 @@
             </div>
         </div>
     </div>
-    <div class="game-over-screen " *ngIf="status === GameStatus.GameOver">
+    <div class="game-over-screen" *ngIf="status === GameStatus.GameOver">
         <div class="message ">GAME OVER</div>
         <div class="text ">The hidden word was:
             <div class="hidden-word "><span *ngFor="let item of currentWord ">{{item}}</span></div>
         </div>
-        <div class="button " (click)="playAgain() ">Play Again</div>
+        <div class="button play-again" (click)="playAgain() ">Play Again</div>
     </div>
 </div>

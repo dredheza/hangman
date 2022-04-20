@@ -3,12 +3,11 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    // background-color: rgba(211, 211, 211, 0.689);
     width: 100%;
     height: 100vh;
     margin: auto;
     gap: 50px;
-    padding: 0 50px;
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
@@ -78,15 +77,24 @@
     width: 50%;
     height: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    // background-color: rgb(225 225 225);
     border-radius: 5px;
-    gap: 0;
+    gap: 150px;
+}
+
+.hangman {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hangman-image {
     width: 80%;
+}
+
+.hangman-mistakes {
+    padding-left: 10px;
 }
 
 .full-screen-message {
@@ -124,12 +132,6 @@
     font-weight: 700;
 }
 
-.play-again {
-    padding: 20px;
-    background-color: #fff;
-    color: #000;
-}
-
 .score {
     font-size: 2rem;
     color: #021f5f;
@@ -165,4 +167,75 @@
     font-size: 3rem;
     padding: 10px 30px;
     border-radius: 10px;
+}
+
+.mobile-stats,
+.correct-mobile-stats {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        height: 100%;
+        margin-top: 10px;
+        gap: 30px;
+    }
+    .title {
+        display: none;
+    }
+    .button {
+        font-size: 1rem;
+        padding: 20px;
+    }
+    .hangman {
+        align-items: center;
+    }
+    .word-side {
+        width: 100%;
+        gap: 30px;
+    }
+    .image {
+        width: 90%;
+    }
+    .game-over-screen {
+        gap: 30px;
+    }
+    .play-again {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .image {
+        justify-content: center;
+    }
+    .text {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .score,
+    .correct,
+    .hangman-mistakes {
+        display: none;
+    }
+    .chosen-word-letter {
+        font-size: 3rem;
+    }
+    .mobile-stats {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f1f1f1;
+        width: 100%;
+        gap: 5px;
+        padding: 10px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.162);
+    }
+    .correct-mobile-stats {
+        background-color: rgb(66, 140, 80);
+        color: #fff;
+        font-size: 1rem;
+        padding: 10px;
+        font-weight: 700;
+        text-align: center;
+    }
 }
