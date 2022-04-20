@@ -43,7 +43,6 @@ export class AppComponent {
     this.generateLettersState();
     this.selectWordRandomly();
     this.initDisplayWord();
-    console.log(this.currentWord)
   }
 
   initDisplayWord() {
